@@ -1,84 +1,11 @@
 import React from 'react';
+import { useLoaderData } from 'react-router-dom';
 
-const classes = [
-  {
-    id: 1,
-    image: 'https://i.ibb.co/cJZFR53/Hatha-Yoga.jpg',
-    name: 'Hatha Yoga',
-    instructor: 'David Swenson',
-    availableSeats: 15,
-    price: 49.99,
-  },
-  {
-    id: 2,
-    image:'https://i.ibb.co/tZScV5W/Vinyasa-Flow.jpg',
-    name: 'Vinyasa Flow',
-    instructor: 'Matthew Sweeney',
-    availableSeats: 40,
-    price: 39.99,
-  },
-  {
-    id: 3,
-    image: 'https://i.ibb.co/SwssRLf/ashtanga-yoga.jpg',
-    name: 'Ashtanga Yoga',
-    instructor: 'Kino MacGregor',
-    availableSeats: 0,
-    price: 39.99,
-  },
-  {
-    id: 4,
-    image: 'https://i.ibb.co/dcYgkcG/Bikram-Yoga.jpg',
-    name: 'Bikram Yoga',
-    instructor: 'Stephanie Keach',
-    availableSeats: 32,
-    price: 39.99,
-  },
-  {
-    id: 5,
-    image: 'https://i.ibb.co/0KD0qk9/Yin-Yoga.jpg',
-    name: 'Yin Yoga',
-    instructor: 'David Swenson',
-    availableSeats: 80,
-    price: 39.99,
-  },
-  {
-    id: 6,
-    image: 'https://i.ibb.co/Jt48zjF/Kundalini-Yoga.jpg',
-    name: 'Kundalini Yoga',
-    instructor: 'Lino Miele',
-    availableSeats: 0,
-    price: 39.99,
-  },
-  {
-    id: 7,
-    image: 'https://i.ibb.co/cJZFR53/Hatha-Yoga.jpg',
-    name: 'Hatha Yoga',
-    instructor: 'David Swenson',
-    availableSeats: 65,
-    price: 49.99,
-  },
-  {
-    id: 8,
-    image: 'https://i.ibb.co/SwssRLf/ashtanga-yoga.jpg',
-    name: 'Ashtanga Yoga',
-    instructor:'Kino MacGregor',
-    availableSeats: 0,
-    price: 39.99,
-  },
-  {
-    id: 9,
-    image: 'https://i.ibb.co/0KD0qk9/Yin-Yoga.jpg',
-    name: 'Yin Yoga',
-    instructor: 'David Swenson',
-    availableSeats: 80,
-    price: 39.99,
-  }
-  
-];
 
 const AllClass = () => {
-  const isLoggedIn = true; // Set this to false if user is not logged in
-  const isAdmin = false; // Set this to true if user is an admin/instructor
+  const classes = useLoaderData()
+  const isLoggedIn = true;
+  const isAdmin = false; 
 
   const handleSelectClass = (classId) => {
     if (!isLoggedIn) {

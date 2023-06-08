@@ -30,7 +30,8 @@ export const router = createBrowserRouter([
         },
         {
           path:'allclass',
-          element:<AllClass></AllClass>
+          element:<AllClass></AllClass>,
+          loader:()=> fetch('http://localhost:5000/allClasses')
         },
         {
           path:'InstructorsPage',

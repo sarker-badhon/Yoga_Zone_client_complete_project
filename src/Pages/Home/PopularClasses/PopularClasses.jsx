@@ -1,9 +1,12 @@
-import React from 'react';
-
+import React, { useEffect, useState } from 'react';
 
 
 const classesData = [
-    { name: 'Hatha Yoga', image: 'https://i.ibb.co/cJZFR53/Hatha-Yoga.jpg', students: 100 },
+    {
+        name: 'Hatha Yoga',
+        image: 'https://i.ibb.co/cJZFR53/Hatha-Yoga.jpg',
+        students: 100
+    },
     { name: 'Vinyasa Flow', image: 'https://i.ibb.co/tZScV5W/Vinyasa-Flow.jpg', students: 85 },
     { name: 'Ashtanga Yoga', image: 'https://i.ibb.co/SwssRLf/ashtanga-yoga.jpg', students: 78 },
     { name: 'Bikram Yoga', image: 'https://i.ibb.co/dcYgkcG/Bikram-Yoga.jpg', students: 65 },
@@ -12,6 +15,20 @@ const classesData = [
 ]
 
 const PopularClasses = () => {
+    const [classesData, setClassesData] = useState([]);
+
+  useEffect(() => {
+    const fetchClassesData = async () => {
+      try {
+        const response = await fetch('http://localhost:5000/allClasses');
+        const data = await response.json();
+        setClassesData(data);
+      } catch (error) {
+        console.error('Failed to fetch classesData:', error);
+      }
+    };
+    fetchClassesData();
+  }, []);
 
     const sortedClasses = [...classesData].sort((a, b) => b.students - a.students);
     const topClasses = sortedClasses.slice(0, 6);
