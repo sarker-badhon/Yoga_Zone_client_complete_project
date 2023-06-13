@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const classesData = [
     {
@@ -28,6 +29,7 @@ const PopularClasses = () => {
       }
     };
     fetchClassesData();
+    AOS.init();
   }, []);
 
     const sortedClasses = [...classesData].sort((a, b) => b.students - a.students);
@@ -39,7 +41,8 @@ const PopularClasses = () => {
                 <h2 className="text-4xl font-bold text-[#ff91b8] mt-10 mb-6 text-center ">Popular Classes</h2>
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
                     {topClasses.map((cls) => (
-                        <div key={cls.name} className="bg-white rounded-lg shadow-lg overflow-hidden">
+                        <div key={cls._id} data-aos="fade-up" data-aos-duration="1000" className="bg-white rounded-lg shadow-lg overflow-hidden">
+                           
                             <img
                                 src={cls.image}
                                 alt={cls.name}

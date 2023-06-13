@@ -1,27 +1,70 @@
-import React from 'react';
-import { Outlet,Link } from "react-router-dom";
-const Dashboard = () => {
-    return (
-        <div className="drawer drawer-mobile">
-            <input id="my-drawer" type="checkbox" className="drawer-toggle" />
-            <div className="drawer-content flex flex-col items-center justify-center mt-32">
-                {/* Page content here */}
-                <Outlet></Outlet>
-                <label htmlFor="my-drawer" className="btn btn-primary drawer-button">Open drawer</label>
-            </div>
-            <div className="drawer-side">
-                <label htmlFor="my-drawer" className="drawer-overlay"></label>
-                <ul className="menu p-4 w-80 h-full bg-base-200 text-base-content">
-                    {/* Sidebar content here */}
-                    <li> <Link className='font-bold'>My Selected Classes</Link> </li>
-                    <li> <Link className='font-bold'>My Enrolled</Link> </li>
-                    <li> <Link className='font-bold'>Payment</Link> </li>
-                    <li></li>
+import React, { useContext } from 'react';
+import { Link, Outlet } from "react-router-dom";
+import { FaUser,FaUsers } from 'react-icons/fa';
+import { AiOutlineHome } from 'react-icons/ai';
+import useAdmin from '../../../hooks/useAdmin';
+import useInstructors from '../../../hooks/useInstructors'; 
+import { AuthContext } from '../../../Providers/AuthProviders';
 
-                </ul>
-            </div>
-        </div> 
-    );
+const Dashboard = () => {
+  // const {user}=useContext(AuthContext)
+  const [isAdmin] = useAdmin();
+  console.log('isadmin',isAdmin)
+  const [isInstructor]=useInstructors()
+  
+  return (
+    <div className="drawer lg:drawer-open bg-[#e8aec2] ">
+      <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
+      <div className="drawer-content flex flex-col items-center justify-center">
+        <label htmlFor="my-drawer-2" className="btn btn-primary drawer-button lg:hidden">Open drawer</label>
+        
+        <Outlet></Outlet>
+      </div>
+      <div className="drawer-side ">
+        <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
+        <ul className="menu p-4 w-80 h-full bg-[#ff91b8] text-base-content">
+          <h1 className="text-2xl font-bold mb-4">Dashboard</h1>
+        
+       
+
+         {/* <div className="dropdown dropdown-end flex justify-center items-center">
+                        <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+                           <div className="h-[150px] w-full rounded-full">
+                         <img src={user?.photoURL} />
+                               </div>
+                        </label>
+                    </div> */}
+        
+
+         
+          {
+          isAdmin && 
+            <>
+              <li><Link className='text-xl' to='/dashboard/ManageClass'><FaUser className="text-[#c60448]" /> Manage classes</Link></li>
+              <li><Link className='text-xl' to='/dashboard/ManageUser'> <FaUsers  className="text-[#c60448]" />Manage Users</Link></li>
+              <li><Link className='text-xl' to='/dashboard/AddClass'>Add Class</Link></li>
+              <li><Link className='text-xl' to='/dashboard/myclass'> My class</Link></li>
+            </>
+          }
+          {!isAdmin && isInstructor && 
+            <>
+              <li><Link className='text-xl' to='/dashboard/AddClass'>Add Class</Link></li>
+              <li><Link className='text-xl' to='/dashboard/myclass'> My class</Link></li>
+              
+            </>
+          }
+          {!isAdmin && !isInstructor && 
+            <>
+              <li><Link className='text-xl' to='/dashboard/MySelectedClasses'> Selected Classes</Link></li>
+              <li><Link className='text-xl' to='/dashboard/MyEnrolledClasses'> Enroll Classes</Link></li>
+            </>
+          }
+          <div className="divider"></div>
+          <li><Link className='text-xl' to='/'><AiOutlineHome className="text-[#c60448]" /> Home</Link></li>
+        </ul>
+      </div>
+    </div>
+  );
 };
 
 export default Dashboard;

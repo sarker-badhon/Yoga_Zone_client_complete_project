@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { FaRegEyeSlash } from 'react-icons/fa';
 import { FaGoogle, FaEye, } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2'
 import { AuthContext } from '../../../Providers/AuthProviders';
 
@@ -12,6 +12,10 @@ const Login = () => {
     const [showPassword, setShowPassword] = useState(false);
 
     const { signIn, googleSignIn } = useContext(AuthContext);
+    const navigate = useNavigate()
+    const location = useLocation()
+
+    const from = location.state?.from?.pathname || "/"
 
     const onSubmit = (data) => {
         setIsLoading(true);
@@ -27,6 +31,7 @@ const Login = () => {
                     timer: 1500,
                 });
                 // Navigate to the desired page
+                // navigate(from,{replace:true});
             })
             .catch((err) => {
                 console.log(err);
