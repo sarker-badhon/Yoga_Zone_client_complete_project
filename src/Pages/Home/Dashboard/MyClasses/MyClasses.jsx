@@ -1,20 +1,32 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const MyClasses = () => {
-  const [classes, setClasses] = useState([
-    { name: 'Class A', status: 'Pending', enrolledStudents: 0, feedback: '' },
-    { name: 'Class B', status: 'Approved', enrolledStudents: 10, feedback: '' },
-    { name: 'Class C', status: 'Denied', enrolledStudents: 5, feedback: 'Class C is full.' },
-    { name: 'Class B', status: 'Approved', enrolledStudents: 10, feedback: '' },
-    { name: 'Class C', status: 'Denied', enrolledStudents: 5, feedback: 'Class C is full.' },
-    { name: 'Class B', status: 'Approved', enrolledStudents: 10, feedback: '' },
-    { name: 'Class C', status: 'Denied', enrolledStudents: 5, feedback: 'Class C is full.' },
-  ]);
+  const [classes, setClasses] = useState([]);
+
+  useEffect(() => {
+    const fetchClasses = async () => {
+      try {
+        const response = await fetch('http://localhost:5000/addClass');
+        if (response.ok) {
+          const classesData = await response.json();
+          setClasses(classesData);
+        } else {
+          console.error('Request failed with status:', response.status);
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchClasses();
+  }, []);
 
   const handleUpdate = (index) => {
-    // Implement your logic for updating class details here
+    
+    console.log(`Update class with index ${index}`);
   };
 
+  
   return (
     <table className="min-w-full bg-white border border-gray-300">
       <thead>
@@ -29,13 +41,13 @@ const MyClasses = () => {
       <tbody>
         {classes.map((classItem, index) => (
           <tr key={index} className="text-center">
-            <td className="py-2 px-4 border-b">{classItem.name}</td>
+            <td className="py-2 px-4 border-b">{classItem.className}</td>
             <td className="py-2 px-4 border-b">{classItem.status}</td>
             <td className="py-2 px-4 border-b">{classItem.enrolledStudents}</td>
             <td className="py-2 px-4 border-b">{classItem.feedback}</td>
             <td className="py-2 px-4 border-b">
               <button
-                className="px-4 py-2 text-white bg-[#e76391] hover:bg-[#ff91b8] rounded hover:[#ff91b8]"
+                className="px-4 py-2 text-white bg-pink-500 hover:bg-pink-600 rounded"
                 onClick={() => handleUpdate(index)}
               >
                 Update
@@ -49,6 +61,3 @@ const MyClasses = () => {
 };
 
 export default MyClasses;
-
-
-

@@ -40,27 +40,26 @@ const Dashboard = () => {
           {
           isAdmin && 
             <>
-              <li><Link className='text-xl' to='/dashboard/ManageClass'><FaUser className="text-[#c60448]" /> Manage classes</Link></li>
-              <li><Link className='text-xl' to='/dashboard/ManageUser'> <FaUsers  className="text-[#c60448]" />Manage Users</Link></li>
-              <li><Link className='text-xl' to='/dashboard/AddClass'>Add Class</Link></li>
-              <li><Link className='text-xl' to='/dashboard/myclass'> My class</Link></li>
+              <li><Link className='text-xl' to="/dashboard/ManageClass"><FaUser className="text-[#c60448]" /> Manage classes</Link></li>
+              <li><Link className='text-xl' to="/dashboard/ManageUser"> <FaUsers  className="text-[#c60448]" />Manage Users</Link></li>
+              
             </>
           }
           {!isAdmin && isInstructor && 
             <>
-              <li><Link className='text-xl' to='/dashboard/AddClass'>Add Class</Link></li>
-              <li><Link className='text-xl' to='/dashboard/myclass'> My class</Link></li>
+              <li><Link className='text-xl' to="/dashboard/AddClass">Add Class</Link></li>
+              <li><Link className='text-xl' to="/dashboard/MyClasses"> My class</Link></li>
               
             </>
           }
           {!isAdmin && !isInstructor && 
             <>
-              <li><Link className='text-xl' to='/dashboard/MySelectedClasses'> Selected Classes</Link></li>
-              <li><Link className='text-xl' to='/dashboard/MyEnrolledClasses'> Enroll Classes</Link></li>
+              <li><Link className='text-xl' to="/dashboard/MySelectedClasses"> Selected Classes</Link></li>
+              <li><Link className='text-xl' to="/dashboard/MyEnrolledClasses"> Enroll Classes</Link></li>
             </>
           }
           <div className="divider"></div>
-          <li><Link className='text-xl' to='/'><AiOutlineHome className="text-[#c60448]" /> Home</Link></li>
+          <li><Link className='text-xl' to="/"><AiOutlineHome className="text-[#c60448]" /> Home</Link></li>
         </ul>
       </div>
     </div>

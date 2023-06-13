@@ -81,6 +81,10 @@ export const router = createBrowserRouter([
         path: "/dashboard/payment",
         element: <Payment></Payment>
       },
+      // {
+      //   path: "/dashboard/MyClassTable",
+      //   element:<MyClassTable></MyClassTable>
+      // }
     ]
   },
   {

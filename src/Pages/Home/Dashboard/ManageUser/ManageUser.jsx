@@ -85,7 +85,7 @@ console.log(users)
 
   return (
     <div className="container mx-auto px-4">
-      <h1 className="text-3xl text-white font-bold my-8 text-center">Manage Users: {users.length}</h1>
+      <h1 className="text-3xl text-white font-bold my-8 text-center">Manage Users</h1>
       <h1 className="text-3xl text-white mb-3 font-semibold ">Total Users : {users.length}</h1>
       <div className="overflow-x-auto">
         <table className="table  lg:w-full border  rounded">

@@ -3,7 +3,7 @@ import { AuthContext } from '../../../../Providers/AuthProviders';
 
 const ManageClass = () => {
   const [classes, setClasses] = useState([]);
-  const { user} = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
 
   useEffect(() => {
     const fetchClasses = async () => {
@@ -54,9 +54,9 @@ const ManageClass = () => {
     <div className="container mx-auto px-4">
       <h1 className="text-2xl font-bold my-4">Manage Classes</h1>
       <div className="overflow-x-auto">
-        <table className="min-w-full border rounded">
+        <table className="table w-full border rounded">
           <thead>
-            <tr>
+            <tr className="text-[18px]">
               <th className="p-2">Class Image</th>
               <th className="p-2">Class Name</th>
               <th className="p-2">Instructor Name</th>
@@ -72,7 +72,7 @@ const ManageClass = () => {
               <tr key={cls._id}>
                 <td className="p-2">
                   <img className='rounded h-20' src={cls?.classImage} alt="" />
-                  </td> 
+                </td>
                 <td className="p-2">{cls.className}</td>
                 <td className="p-2">{user?.displayName}</td>
                 <td className="p-2">{user?.email}</td>
@@ -98,9 +98,9 @@ const ManageClass = () => {
                     onClick={() => {
                       // Open the modal or navigate to another route for sending feedback
                     }}
-                    className="bg-blue-500 hover:bg-blue-600 text-white rounded px-4 py-2 disabled:bg-gray-400 disabled:cursor-not-allowed mt-2"
+                    className="bg-[#ef5f91] hover:bg-[#f52b72] text-white rounded px-4 py-2 disabled:bg-gray-400 disabled:cursor-not-allowed mt-2"
                   >
-                   Feedback
+                    Feedback
                   </button>
                 </td>
               </tr>

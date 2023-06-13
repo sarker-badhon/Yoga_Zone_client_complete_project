@@ -7,43 +7,45 @@ import Swal from 'sweetalert2';
 import 'sweetalert2/dist/sweetalert2.min.css';
 
 function AddClass() {
-  const { register, handleSubmit, reset } = useForm();
-const {user}=useContext(AuthContext)
-const onSubmit = async (data) => {
-  try {
-    const response = await fetch('http://localhost:5000/addClass', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(data),
-    });
-
-    if (response.ok) {
-      const classData = await response.json();
-      console.log(classData);                    // The server returns the added class object
-      reset();                                  // Reset the form
-
-                                                // Show success message using SweetAlert
-      Swal.fire({
-        icon: 'success',
-        title: 'Success!',
-        text: 'The class has been added successfully.',
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm();
+  const { user } = useContext(AuthContext)
+  const onSubmit = async (data) => {
+    try {
+      const response = await fetch('http://localhost:5000/addClass', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
       });
-    } else {
-                                                   // Handle the error if the request fails
-      console.error('Request failed with status:', response.status);
+
+      if (response.ok) {
+        const classData = await response.json();
+        console.log(classData);                    // The server returns the added class object
+        reset();                                  // Reset the form
+
+        // Show success message using SweetAlert
+        Swal.fire({
+          icon: 'success',
+          title: 'Success!',
+          text: 'The class has been added successfully.',
+        });
+      } else {
+        // Handle the error if the request fails
+        console.error('Request failed with status:', response.status);
+      }
+    } catch (error) {
+      console.error(error);
+      // Handle error if the request fails
     }
-  } catch (error) {
-    console.error(error);
-                                                       // Handle error if the request fails
-  }
-};
-
-
-  const getLoggedInInstructorEmail = () => {
-    return 'john.doe@example.com';
   };
+
+
 
   return (
     <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -58,8 +60,12 @@ const onSubmit = async (data) => {
               type="text"
               id="className"
               {...register('className', { required: true })}
-              className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-[#ff91b8]"
+              className={`w-full px-4 py-2 border rounded-md focus:outline-none focus:ring ${errors.className ? 'border-red-500' : 'border-gray-300 focus:ring-[#ff91b8]'
+                }`}
             />
+            {errors.className && (
+              <p className="text-red-500">Class Name is required.</p>
+            )}
           </div>
           <div className="mb-4">
             <label htmlFor="classImage" className="block mb-1 font-medium text-xl">
@@ -69,10 +75,13 @@ const onSubmit = async (data) => {
               type="url"
               id="classImage"
               {...register('classImage', { required: true })}
-              className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-[#ff91b8]"
+              className={`w-full px-4 py-2 border rounded-md focus:outline-none focus:ring ${errors.classImage ? 'border-red-500' : 'border-gray-300 focus:ring-[#ff91b8]'
+                }`}
             />
+            {errors.classImage && (
+              <p className="text-red-500">Class Image URL is required.</p>
+            )}
           </div>
-
           <div className="mb-4">
             <label htmlFor="instructorName" className="block mb-1 font-medium text-xl">
               Instructor Name
@@ -80,12 +89,13 @@ const onSubmit = async (data) => {
             <input
               type="text"
               id="instructorName"
-              value={user?.displayName}
-              // {...register('instructorName', { required: true })}
-              readOnly
-              className="w-full px-4 py-2 border border-gray-300 rounded-md bg-gray-100"
-              disabled
+              {...register('instructorName', { required: true })}
+              className={`w-full px-4 py-2 border rounded-md focus:outline-none focus:ring ${errors.instructorName ? 'border-red-500' : 'border-gray-300 focus:ring-[#ff91b8]'
+                }`}
             />
+            {errors.instructorName && (
+              <p className="text-red-500">Instructor Name is required.</p>
+            )}
           </div>
           <div className="mb-4">
             <label htmlFor="instructorEmail" className="block mb-1 font-medium text-xl">
@@ -94,12 +104,13 @@ const onSubmit = async (data) => {
             <input
               type="email"
               id="instructorEmail"
-              value={user?.email}
-              // {...register('instructorEmail', { required: true })}
-              readOnly
-              className="w-full px-4 py-2 border border-gray-300 rounded-md bg-gray-100"
-              disabled
+              {...register('instructorEmail', { required: true })}
+              className={`w-full px-4 py-2 border rounded-md focus:outline-none focus:ring ${errors.instructorEmail ? 'border-red-500' : 'border-gray-300 focus:ring-[#ff91b8]'
+                }`}
             />
+            {errors.instructorEmail && (
+              <p className="text-red-500">Instructor Email is required.</p>
+            )}
           </div>
           <div className="mb-4">
             <label htmlFor="availableSeats" className="block mb-1 font-medium text-xl">
@@ -109,8 +120,12 @@ const onSubmit = async (data) => {
               type="number"
               id="availableSeats"
               {...register('availableSeats', { required: true })}
-              className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-[#ff91b8]"
+              className={`w-full px-4 py-2 border rounded-md focus:outline-none focus:ring ${errors.availableSeats ? 'border-red-500' : 'border-gray-300 focus:ring-[#ff91b8]'
+                }`}
             />
+            {errors.availableSeats && (
+              <p className="text-red-500">Available Seats is required.</p>
+            )}
           </div>
           <div className="mb-4">
             <label htmlFor="price" className="block mb-1 font-medium text-xl">
@@ -120,8 +135,12 @@ const onSubmit = async (data) => {
               type="number"
               id="price"
               {...register('price', { required: true })}
-              className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-[#ff91b8]"
+              className={`w-full px-4 py-2 border rounded-md focus:outline-none focus:ring ${errors.price ? 'border-red-500' : 'border-gray-300 focus:ring-[#ff91b8]'
+                }`}
             />
+            {errors.price && (
+              <p className="text-red-500">Price is required.</p>
+            )}
           </div>
         </div>
 
