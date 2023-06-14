@@ -20,7 +20,7 @@ function MyEnrolledClasses() {
         <tbody>
           {enrolledClasses.map((classObj) => (
             <tr key={classObj.name}>
-              <td className="py-2">{classObj.name}</td>
+              {/* <td className="py-2">{classObj.name}</td> */}
               <td className="py-2">{classObj.date}</td>
               <td className="py-2">{classObj.time}</td>
             </tr>
