@@ -8,7 +8,7 @@ const PopularInstructors = () => {
     // Make an API call to fetch the instructor data
     const fetchInstructors = async () => {
       try {
-        const response = await fetch('http://localhost:5000/instructors');
+        const response = await fetch('https://yoga-zone-server-iota.vercel.app/instructors');
         const data = await response.json();
         setInstructorsData(data);
       } catch (error) {

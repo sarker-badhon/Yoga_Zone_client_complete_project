@@ -17,7 +17,7 @@ const AllClass = () => {
   const [classes, setClasses] = useState([]);
   // console.log(classes)
   useEffect(() => {
-    fetch('http://localhost:5000/allClasses')
+    fetch('https://yoga-zone-server-iota.vercel.app/allClasses')
     .then(res =>res.json())
     .then(data=>{
       setClasses(data)
@@ -27,7 +27,7 @@ const AllClass = () => {
   // const handleSelectClass = (classId) => {
   //   const cartItem = {menuItemId: _id, name, image, price}
   //   if (user) {
-  //     fetch('http://localhost:5000/ClassesCart',{
+  //     fetch('https://yoga-zone-server-iota.vercel.app/ClassesCart',{
   //       method:"POST",
   //       headers:{
   //         "content-type":"application/json"

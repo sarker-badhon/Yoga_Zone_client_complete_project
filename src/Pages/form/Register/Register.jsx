@@ -21,7 +21,7 @@ const Register = () => {
         updateUserProfile(data.name, data.photoURL);
 
         // Send user registration data to API
-        fetch('http://localhost:5000/users', {
+        fetch('https://yoga-zone-server-iota.vercel.app/users', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -68,7 +68,7 @@ const Register = () => {
     googleSignIn()
       .then((result) => {
         const user = result.user;
-        fetch('http://localhost:5000/users', {
+        fetch('https://yoga-zone-server-iota.vercel.app/users', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

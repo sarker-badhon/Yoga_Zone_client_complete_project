@@ -9,7 +9,7 @@ const Payment = () => {
 
 
   const fetchData = () => {
-    fetch('http://localhost:5000/ClassesCart')
+    fetch('https://yoga-zone-server-iota.vercel.app/ClassesCart')
       .then((res) => {
         if (!res.ok) {
           throw new Error('Failed to fetch classes');
@@ -30,14 +30,16 @@ const Payment = () => {
 
 
   const total = selectedClasses.reduce((sum, item) => item.price + sum, 0).toFixed(2);
-  const price=parseFloat(total)
-
+  const price = parseFloat(total)
+const items = selectedClasses.map(items=>items)
 
   return (
     <div className="w-full max-w-md mx-auto p-4">
       <h1 className="text-2xl font-bold mb-4">Payment</h1>
+      
       <Elements stripe={stripePromise}>
-        <PaymentForm price={price}></PaymentForm>
+      
+        <PaymentForm selectedClasses={items} price= {price}></PaymentForm>
       </Elements>
     </div>
   );

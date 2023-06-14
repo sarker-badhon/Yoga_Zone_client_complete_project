@@ -1,0 +1,17 @@
+.light-mode {
+    --background-color: #fff;
+    --text-color: #000;
+    /* Add other light mode styles */
+  }
+  
+  .dark-mode {
+    --background-color: #222;
+    --text-color: #fff;
+    /* Add other dark mode styles */
+  }
+  
+  body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+  }
+  

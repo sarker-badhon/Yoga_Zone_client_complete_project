@@ -6,7 +6,7 @@ const MyClasses = () => {
   useEffect(() => {
     const fetchClasses = async () => {
       try {
-        const response = await fetch('http://localhost:5000/addClass');
+        const response = await fetch('https://yoga-zone-server-iota.vercel.app/addClass');
         if (response.ok) {
           const classesData = await response.json();
           setClasses(classesData);

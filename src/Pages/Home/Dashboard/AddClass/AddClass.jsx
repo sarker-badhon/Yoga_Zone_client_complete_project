@@ -16,7 +16,7 @@ function AddClass() {
   const { user } = useContext(AuthContext)
   const onSubmit = async (data) => {
     try {
-      const response = await fetch('http://localhost:5000/addClass', {
+      const response = await fetch('https://yoga-zone-server-iota.vercel.app/addClass', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

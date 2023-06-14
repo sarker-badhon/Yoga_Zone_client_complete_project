@@ -7,7 +7,7 @@ const MySelectedClasses = () => {
   const total = selectedClasses.reduce((sum, item) => item.price + sum, 0).toFixed(2);
 
   const fetchData = () => {
-    fetch('http://localhost:5000/ClassesCart')
+    fetch('https://yoga-zone-server-iota.vercel.app/ClassesCart')
       .then((res) => {
         if (!res.ok) {
           throw new Error('Failed to fetch classes');
@@ -42,7 +42,7 @@ const MySelectedClasses = () => {
     }).then((result) => {
         if (result.isConfirmed) {
     // Send delete request to server
-    fetch(`http://localhost:5000/ClassesCart/${classObj._id}`, {
+    fetch(`https://yoga-zone-server-iota.vercel.app/ClassesCart/${classObj._id}`, {
       method: 'DELETE',
     })
       .then((res) => res.json())

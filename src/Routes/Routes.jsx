@@ -24,10 +24,15 @@ export const router = createBrowserRouter([
   {
     path: "/",
     element: <Main></Main>,
+    
     children: [
       {
         path: "/",
         element: <Home></Home>
+      },
+      {
+        path:'/',
+        element:<DarkMode></DarkMode>
       },
       {
         path: '/login',
@@ -44,7 +49,7 @@ export const router = createBrowserRouter([
       {
         path: 'InstructorsPage',
         element: <InstructorsPage></InstructorsPage>,
-        loader: () => fetch('http://localhost:5000/instructors')
+        loader: () => fetch('https://yoga-zone-server-iota.vercel.app/instructors')
       }
 
     ]
@@ -55,19 +60,19 @@ export const router = createBrowserRouter([
     children: [
       {
         path: "/dashboard/MySelectedClasses",
-        element: <MySelectedClasses></MySelectedClasses>
+        element:<PrivateRoute><MySelectedClasses></MySelectedClasses></PrivateRoute> 
       },
       {
         path: "/dashboard/MyEnrolledClasses",
-        element: <MyEnrolledClasses></MyEnrolledClasses>
+        element:<PrivateRoute><MyEnrolledClasses></MyEnrolledClasses></PrivateRoute> 
       },
       {
         path: "/dashboard/AddClass",
-        element: <AddClass></AddClass>
+        element:<PrivateRoute><AddClass></AddClass></PrivateRoute> 
       },
       {
         path: "/dashboard/MyClasses",
-        element: <MyClasses></MyClasses>
+        element:<PrivateRoute> <MyClasses></MyClasses></PrivateRoute>
       },
       {
         path: "/dashboard/ManageClass",
@@ -81,10 +86,7 @@ export const router = createBrowserRouter([
         path: "/dashboard/payment",
         element: <Payment></Payment>
       },
-      // {
-      //   path: "/dashboard/MyClassTable",
-      //   element:<MyClassTable></MyClassTable>
-      // }
+     
     ]
   },
   {

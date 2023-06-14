@@ -21,7 +21,7 @@ const PopularClasses = () => {
   useEffect(() => {
     const fetchClassesData = async () => {
       try {
-        const response = await fetch('http://localhost:5000/allClasses');
+        const response = await fetch('https://yoga-zone-server-iota.vercel.app/allClasses');
         const data = await response.json();
         setClassesData(data);
       } catch (error) {

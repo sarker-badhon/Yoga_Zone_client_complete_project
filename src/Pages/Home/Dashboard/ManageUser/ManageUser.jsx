@@ -6,7 +6,7 @@ import useAxiosSecure from '../../../../hooks/useAxiosSecure';
 const ManageUser = () => { 
   // const [axiosSecure] = useAxiosSecure();
   const { data: users = [], refetch } = useQuery('[users]', async () => { 
-    const response = await fetch('http://localhost:5000/users'); // Fixed the API request
+    const response = await fetch('https://yoga-zone-server-iota.vercel.app/users'); // Fixed the API request
     return response.json(); 
   });
 
@@ -16,7 +16,7 @@ console.log(users)
  
  const makeInstructor = async (userId) => {
   try {
-    const response = await fetch(`http://localhost:5000/users/instructor/${userId}`, {
+    const response = await fetch(`https://yoga-zone-server-iota.vercel.app/users/instructor/${userId}`, {
       method: 'PUT',
     });
     if (response.ok) {
@@ -52,7 +52,7 @@ console.log(users)
 
   const makeAdmin = async (userId) => {
     try {
-      const response = await fetch(`http://localhost:5000/users/admin/${userId}`, {
+      const response = await fetch(`https://yoga-zone-server-iota.vercel.app/users/admin/${userId}`, {
         method: 'PUT',
       });
   

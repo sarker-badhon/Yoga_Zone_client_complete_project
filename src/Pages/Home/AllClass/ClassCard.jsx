@@ -19,7 +19,7 @@ const ClassCard = ({ classItem }) => {
     const handleSelectClass = (classId) => {
         const ClassCartItem = { classId: _id, name, image, price }
         if (user) {
-            fetch('http://localhost:5000/ClassesCart', {
+            fetch('https://yoga-zone-server-iota.vercel.app/ClassesCart', {
                 method: "POST",
                 headers: {
                     "content-type": "application/json"
