@@ -28,7 +28,7 @@ console.log(users)
       });
       setUpdatedUsers(updatedUsersData);
 
-      // Display SweetAlert success notification
+     
       Swal.fire({
         icon: 'success',
         title: 'Success!',
@@ -40,7 +40,7 @@ console.log(users)
   } catch (error) {
     console.error('An error occurred while making the user an instructor:', error);
 
-    // Display SweetAlert error notification
+    
     Swal.fire({
       icon: 'error',
       title: 'Error!',
