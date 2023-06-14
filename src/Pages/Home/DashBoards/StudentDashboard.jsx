@@ -3,7 +3,7 @@ import React from 'react';
 const StudentDashboard = () => {
     return (
         <div>
-            student dashboard
+          <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Omnis, ab?</p>
         </div>
     );
 };
