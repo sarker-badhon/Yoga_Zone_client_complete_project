@@ -46,8 +46,7 @@ const ManageClass = () => {
   };
 
   const sendFeedback = (classId, feedback) => {
-    // Handle sending feedback to the instructor
-    // You can store the feedback in the state or send it to the backend
+    
   };
 
   return (
@@ -96,7 +95,7 @@ const ManageClass = () => {
                   </button>
                   <button
                     onClick={() => {
-                      // Open the modal or navigate to another route for sending feedback
+                     
                     }}
                     className="bg-[#ef5f91] hover:bg-[#f52b72] text-white rounded px-4 py-2 disabled:bg-gray-400 disabled:cursor-not-allowed mt-2"
                   >
