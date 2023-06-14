@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { AuthContext } from "../Providers/AuthProviders";
+import { AuthContext } from "../Providers/AuthProviders";      //private route comp
 import { Navigate, useLocation } from "react-router-dom";
 
 
