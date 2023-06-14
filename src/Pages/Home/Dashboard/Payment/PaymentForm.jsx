@@ -4,7 +4,7 @@ import { AuthContext } from "../../../../Providers/AuthProviders";
 import Swal from 'sweetalert2';
 
 const PaymentForm = ({ selectedClasses, price }) => {
-  // console.log(items)
+  
   const stripe = useStripe();
   const elements = useElements();
   const { user } = useContext(AuthContext);
