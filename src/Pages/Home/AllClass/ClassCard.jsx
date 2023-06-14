@@ -6,7 +6,7 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 
 const ClassCard = ({ classItem }) => {
-    const { availableSeats, image, name, instructor, price,_id} = classItem
+    const { availableSeats, image, name, instructor, price, _id } = classItem
     const { user } = useContext(AuthContext)
     const navigate = useNavigate()
     const location = useLocation()
@@ -15,7 +15,7 @@ const ClassCard = ({ classItem }) => {
     const isAdmin = false;
     useEffect(() => {
         AOS.init();
-      }, []);
+    }, []);
     const handleSelectClass = (classId) => {
         const ClassCartItem = { classId: _id, name, image, price }
         if (user) {
@@ -69,11 +69,11 @@ const ClassCard = ({ classItem }) => {
         }
         console.log('Selected class:', classItem);
     };
-   
+
     return (
         <div data-aos="fade-up" data-aos-duration="1000">
 
-            <div  
+            <div
                 className={`p-4 bg-white shadow-md  ${classItem.availableSeats === 0 ? 'border-red-500' : 'border-gray-500'
                     }`}
             >
@@ -91,7 +91,7 @@ const ClassCard = ({ classItem }) => {
                     {classItem.availableSeats === 0 ? 'Sold Out' : 'Select'}
                 </button>
             </div>
-      
+
         </div>
     );
 };

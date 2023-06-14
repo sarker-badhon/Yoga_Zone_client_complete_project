@@ -1,6 +1,5 @@
-// AddClass.js
 
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import { AuthContext } from '../../../../Providers/AuthProviders';
 import Swal from 'sweetalert2';
