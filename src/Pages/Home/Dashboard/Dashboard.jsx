@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { Link, Outlet } from "react-router-dom";
-import { FaUser,FaUsers } from 'react-icons/fa';
+import { FaCheckCircle, FaUser,FaUserPlus,FaUsers, FaWallet } from 'react-icons/fa';
 import { AiOutlineHome } from 'react-icons/ai';
 import useAdmin from '../../../hooks/useAdmin';
 import useInstructors from '../../../hooks/useInstructors'; 
@@ -54,8 +54,13 @@ const Dashboard = () => {
           }
           {!isAdmin && !isInstructor && 
             <>
-              <li><Link className='text-xl' to="/dashboard/MySelectedClasses"> Selected Classes</Link></li>
-              <li><Link className='text-xl' to="/dashboard/MyEnrolledClasses"> Enroll Classes</Link></li>
+              <li><Link className='text-xl' to="/dashboard/MySelectedClasses">
+              <FaCheckCircle className="text-[#c60448]" size={25} /> Selected Classes</Link></li>
+              <li><Link className='text-xl' to="/dashboard/MyEnrolledClasses"> 
+              <FaUserPlus className="text-[#c60448]" size={25} />Enroll Classes</Link></li>
+              <li><Link className='text-xl' to="/dashboard/PaymentHistory"> 
+              <FaWallet className="text-[#c60448]" />
+              Payment History </Link></li>
             </>
           }
           <div className="divider"></div>

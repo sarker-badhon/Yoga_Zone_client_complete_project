@@ -103,6 +103,7 @@ const PaymentForm = ({ selectedClasses, price }) => {
               emailId: user?.email,
               quantity: selectedClasses.length,
               price:price,
+              date: new Date(),
               itemNames: selectedClasses.map(item => item),  
               transactionId: transactionId,
             };
@@ -142,36 +143,7 @@ const PaymentForm = ({ selectedClasses, price }) => {
     }
   };
 
-  // const savePaymentToServer = async (transactionId) => {
-  //   try {
-  //     const payment = {
-  //       emailId: user?.email,
-  //       quantity: selectedClasses.length,
-  //       itemNames: selectedClasses.map(item => item.className),
-  //       transactionId: transactionId,
-  //     };
-
-  //     const response = await fetch('https://yoga-zone-server-iota.vercel.app/payments', {
-  //       method: 'POST',
-  //       headers: {
-  //         'Content-Type': 'application/json',
-  //       },
-  //       body: JSON.stringify(payment),
-  //     });
-
-  //     if (response.ok) {
-  //       const data = await response.json();
-  //       if (data.insertedId > 0) {
-  //         console.log('Payment saved to the server.');
-  //       }
-  //     } else {
-  //       throw new Error('Failed to save payment to the server');
-  //     }
-  //   } catch (error) {
-  //     console.log(error);
-  //     setError('Failed to save payment to the server. Please try again.');
-  //   }
-  // };
+  
 
   return (
     <>

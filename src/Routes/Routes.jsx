@@ -19,6 +19,8 @@ import ManageUser from "../Pages/Home/Dashboard/ManageUser/ManageUser";
 import PrivateRoute from "./PrivateRoute";
 import Payment from "../Pages/Home/Dashboard/Payment/Payment";
 import AdminRoute from "./AdminRoute";
+import DarkMode from "../Shared/DarkMode";
+import PaymentHistory from "../Pages/Home/Dashboard/MyEnrolledClasses/PaymentHistory";
 
 export const router = createBrowserRouter([
   {
@@ -65,6 +67,10 @@ export const router = createBrowserRouter([
       {
         path: "/dashboard/MyEnrolledClasses",
         element:<PrivateRoute><MyEnrolledClasses></MyEnrolledClasses></PrivateRoute> 
+      },
+      {
+        path: "/dashboard/PaymentHistory",
+        element:<PrivateRoute><PaymentHistory></PaymentHistory></PrivateRoute> 
       },
       {
         path: "/dashboard/AddClass",
